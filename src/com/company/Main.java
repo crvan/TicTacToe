@@ -122,14 +122,17 @@ public class Main {
     }
 
     private static void computerMove(char[][] board) {
-        while (true) {
-            Random randy = new Random();
-            int move = randy.nextInt(9) + 1;
-            if (isTaken(board, move)) {
-                makeMove(String.valueOf(move), board, 'O');
-                break;
+        if(determineWinner(board)||isGameFinished(board)) {
+            while (true) {
+                Random randy = new Random();
+                int move = randy.nextInt(9) + 1;
+                if (isTaken(board, move)) {
+                    makeMove(String.valueOf(move), board, 'O');
+                    //breaker = false;
+                     break;
+                }
+                // break;
             }
-            break;
         }
 
     }
@@ -157,3 +160,4 @@ public class Main {
         return false;
     }
 }
+//currently just want to make the board print out if the game ends on the last move, other than that is working right
